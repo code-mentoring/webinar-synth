@@ -12,6 +12,10 @@ const start = () => {
     const key = k.getAttribute('data-key');
     k.addEventListener('click', () => playNote(key));
   });
+
+  document.getElementById('waveform').addEventListener('change', e => {
+    synth.oscillator.type = e.target.value;
+  })
 };
 window.addEventListener('click', start);
 
