@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.61/Tone.js"></script>
+  <script src="synth.js"></script>
+
+  <style>
+    * {
+      outline: none;
+    }
+
+    .piano {
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+    }
+    .key {
+      border: 2px solid black;
+      border-left-width: 0;
+      background: white;
+      list-style: none;
+      height: 6rem;
+    }
+    .key:first-of-type {
+      border-left-width: 2px;
+    }
+    .key.black {
+      background: black;
+    }
+    .key:hover { filter: brightness(0.9); }
+    .key:active { filter: brightness(0.7); }
+
+    .key.black:hover { background: #333; }
+    .key.black:active { background: #666; }
+  </style>
+</head>
+<body>
+  <div class="piano">
+    <!-- First octave -->
+    <button data-key="b"  class="key"></button>
+    <button data-key="c"  class="key"></button>
+    <button data-key="c#" class="key black"></button>
+    <button data-key="d"  class="key"></button>
+    <button data-key="eb" class="key black"></button>
+    <button data-key="e"  class="key"></button>
+    <button data-key="f"  class="key"></button>
+    <button data-key="f#" class="key black"></button>
+    <button data-key="g"  class="key"></button>
+    <button data-key="ab" class="key black"></button>
+    <button data-key="a"  class="key"></button>
+    <button data-key="bb" class="key black"></button>
+
+    <!-- Second octave -->
+    <button data-key="b" class="key"></button>
+    <button data-key="c" class="key"></button>
+    <button data-key="c#" class="key black"></button>
+    <button data-key="d" class="key"></button>
+    <button data-key="eb" class="key black"></button>
+    <button data-key="e" class="key"></button>
+    <button data-key="f" class="key"></button>
+    <button data-key="f#" class="key black"></button>
+    <button data-key="g" class="key"></button>
+    <button data-key="ab" class="key black"></button>
+    <button data-key="a" class="key"></button>
+    <button data-key="bb" class="key black"></button>
+  </div>
+</body>
+</html>
