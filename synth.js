@@ -1,5 +1,6 @@
 let synth;
 let dist;
+let pingPong;
 
 // Workaround for the audio context warning
 const start = () => {
@@ -7,8 +8,11 @@ const start = () => {
 
   //create a synth and connect it to the main output (your speakers)
   // const chorus = new Tone.Chorus(40, 2.5, 1000);
-  dist = new Tone.Distortion(2).toDestination();
-  synth = new Tone.Synth().connect(dist);
+  dist = new Tone.Distortion(2)
+  pingPong = new Tone.PingPongDelay("4n", 0.2).connect(dist);
+
+  synth = new Tone.Synth().connect(pingPong);
+  dist.toDestination();
 
   // Register the buttons to play the notes
   document.querySelectorAll('[data-key]').forEach(k => {
@@ -22,6 +26,10 @@ const start = () => {
 
   document.getElementById('distortion').addEventListener('change', e => {
     dist.distortion = e.target.value;
+  });
+
+  document.getElementById('pingPong').addEventListener('change', e => {
+    pingPong.delayTime.setValueAtTime(e.target.value);
   });
 };
 window.addEventListener('click', start);
