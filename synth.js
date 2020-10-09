@@ -1,11 +1,14 @@
 let synth;
+let dist;
 
 // Workaround for the audio context warning
 const start = () => {
   window.removeEventListener('click', start);
 
   //create a synth and connect it to the main output (your speakers)
-  synth = new Tone.Synth().toDestination();
+  // const chorus = new Tone.Chorus(40, 2.5, 1000);
+  dist = new Tone.Distortion(2).toDestination();
+  synth = new Tone.Synth().connect(dist);
 
   // Register the buttons to play the notes
   document.querySelectorAll('[data-key]').forEach(k => {
@@ -15,7 +18,11 @@ const start = () => {
 
   document.getElementById('waveform').addEventListener('change', e => {
     synth.oscillator.type = e.target.value;
-  })
+  });
+
+  document.getElementById('distortion').addEventListener('change', e => {
+    dist.distortion = e.target.value;
+  });
 };
 window.addEventListener('click', start);
 
